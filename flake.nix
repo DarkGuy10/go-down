@@ -16,6 +16,8 @@
           buildInputs = with pkgs; [
             bun
             nodePackages.typescript
+            nodePackages.vercel
+            tailwindcss-language-server
           ];
         };
       }

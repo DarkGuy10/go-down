@@ -13,12 +13,12 @@ export const ActionRow = ({
 				<Menu strokeWidth={1} absoluteStrokeWidth size={22} />
 			</ActionRowButton>
 			<ActionRowButton title='Report Bugs'>
-				<a href='https://github.com/darkguy10/go.down/issues'>
+				<a href='https://github.com/darkguy10/go-down/issues'>
 					<Bug strokeWidth={1} absoluteStrokeWidth size={22} />
 				</a>
 			</ActionRowButton>
 			<ActionRowButton title='GitHub Page'>
-				<a href='https://github.com/darkguy10/go.down'>
+				<a href='https://github.com/darkguy10/go-down'>
 					<Github strokeWidth={1} absoluteStrokeWidth size={22} />
 				</a>
 			</ActionRowButton>

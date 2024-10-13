@@ -1,9 +1,5 @@
-import { LogoutButton } from '@/components/auth'
+import { ViewWrapper } from '@/components/view'
 
-export default function DashBoard() {
-	return (
-		<div>
-			You have successfully authenticated! <LogoutButton />
-		</div>
-	)
+export default async function DashBoard() {
+	return <ViewWrapper />
 }

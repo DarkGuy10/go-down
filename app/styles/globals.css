@@ -3,6 +3,6 @@
 @tailwind utilities;
 
 body {
-	@apply bg-crust font-sans text-base;
+	@apply bg-base font-sans text-base;
 	color: var(--foreground);
 }

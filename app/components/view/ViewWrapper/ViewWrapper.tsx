@@ -6,6 +6,7 @@ import { TreeViewer, ProductViewer } from '@/components/view'
 import useWindowDimensions from '@/hooks'
 import { Godown, Item } from '@/typings'
 import { getGodowns, getItems } from '@/utils'
+import { LoaderCircle } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
 interface Data {
@@ -35,7 +36,12 @@ export const ViewWrapper = () => {
 			const items = await getItems()
 			const godowns = await getGodowns()
 			if (items && godowns)
-				updateData({ items, godowns, loaded: true, latency: Date.now() - now })
+				updateData({
+					items,
+					godowns,
+					loaded: true,
+					latency: Date.now() - now,
+				})
 		}
 
 		fetchData()
@@ -43,7 +49,17 @@ export const ViewWrapper = () => {
 
 	const godownsMapped = new Map(godowns.map(g => [g.id, g]))
 
-	if (!loaded) return <div>Loading...</div>
+	if (!loaded)
+		return (
+			<div className='w-full h-full top-0 left-0 fixed flex items-center justify-center'>
+				<LoaderCircle
+					size={40}
+					absoluteStrokeWidth
+					strokeWidth={2}
+					className='text-text animate-spin'
+				/>
+			</div>
+		)
 
 	return (
 		<div className='w-full h-full top-0 left-0 fixed flex flex-col '>

@@ -22,7 +22,7 @@ export const ProductViewer = ({
 	belongsTo: Godown | undefined | null
 }) => {
 	return (
-		<div className='bg-base flex grow px-8 py-6 lg:px-16 lg:py-10 overflow-hidden'>
+		<div className='bg-base flex grow px-6 py-6 lg:px-16 lg:py-10 overflow-hidden'>
 			<div className='flex-1 overflow-x-hidddden overflow-y-auto'>
 				{currentItem ? (
 					<ProductSection item={currentItem} godown={belongsTo!} />
@@ -44,18 +44,18 @@ export const ProductViewer = ({
 
 const ProductSection = ({ item, godown }: { item: Item; godown: Godown }) => {
 	return (
-		<main className='flex flex-col h-full'>
+		<main className='flex flex-col h-full overflow-x-hidden'>
 			<div className='flex gap-2 items-center text-text mb-3'>
-				<Box size={28} />
-				<h1 className='text-2xl font-bold'>{item.name}</h1>
+				<Box size={24} />
+				<h1 className='text-xl md:text-2xl font-bold'>{item.name}</h1>
 			</div>
-			<div className='text-sm text-subtext0 font-mono mb-10'>
+			<div className='text-xs md:text-sm text-subtext0 font-mono mb-10'>
 				<span className='bg-mantle px-2 py-1 rounded-md'>
 					id:{item.item_id}
 				</span>
 			</div>
 			<div className=' grow flex flex-col lg:flex-row gap-10 items-center lg:items-start'>
-				<div className='w-full md:w-1/2 lg:w-1/3 flex-none'>
+				<div className='w-2/3 sm:w-1/2 lg:w-1/3 flex-none'>
 					<img
 						src={item.image_url}
 						key={item.image_url}
@@ -64,7 +64,7 @@ const ProductSection = ({ item, godown }: { item: Item; godown: Godown }) => {
 					/>
 				</div>
 				<div className='grow'>
-					<div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8'>
+					<div className='grid grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-8 '>
 						<Card heading='Category' className='text-sapphire' Icon={Layers}>
 							{item.category}
 						</Card>
@@ -118,15 +118,15 @@ const Card = ({
 }) => {
 	return (
 		<div
-			className={`bg-surface2/10 hover:bg-surface2/15 ${className} rounded-md p-4 h-fit`}
+			className={`bg-surface2/10 hover:bg-surface2/15 ${className} rounded-md p-3 md:p-4 h-fit`}
 		>
-			<div className='flex items-center gap-2 text-sm'>
-				<div className='p-2 text-current bg-base rounded-md'>
+			<div className='flex items-center gap-2 text-xs md:text-sm'>
+				<div className='p-1 text-current bg-base rounded-md'>
 					<Icon size={14} strokeWidth={1} absoluteStrokeWidth />
 				</div>
 				<div className='text-subtext0 capitalize'>{heading}</div>
 			</div>
-			<div className='flex text-lg text-text justify-center mt-2'>
+			<div className='flex text-base md:text-lg text-text justify-center mt-2'>
 				<span className='overflow-hidden whitespace-nowrap text-ellipsis'>
 					{typeof children === 'boolean' ? children.toString() : children}
 				</span>

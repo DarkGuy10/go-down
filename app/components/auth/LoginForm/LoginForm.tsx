@@ -4,6 +4,7 @@ import { authenticate } from '@/lib/actions'
 import { useFormState } from 'react-dom'
 import { LoginButton } from '@/components/auth'
 import { Input } from '@/components/model'
+import { AtSign, Key } from 'lucide-react'
 
 // TODO: replace useFormState with useActionState once
 // it comes out of canary into stable
@@ -27,16 +28,18 @@ export const LoginForm = ({ callbackUrl }: { callbackUrl?: string }) => {
 				type='email'
 				placeholder='cereal@soup.org'
 				required
+				Icon={AtSign}
 				autoComplete='email'
 			/>
 			<Input
 				label='Password'
 				name='password'
 				type='password'
+				Icon={Key}
 				placeholder='* * * * *'
 				required
 			/>
-			<Input type='hidden' name='redirectTo' value={callbackUrl} />
+			<input type='hidden' name='redirectTo' value={callbackUrl} />
 			<div className='text-sm text-red'> {errorMessage}</div>
 			<div className='flex justify-center mt-5'>
 				<LoginButton />

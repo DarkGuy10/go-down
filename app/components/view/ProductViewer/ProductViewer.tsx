@@ -46,8 +46,8 @@ export const ProductViewer = ({
 
 const ProductSection = ({ item, godown }: { item: Item; godown: Godown }) => {
 	return (
-		<main className='flex flex-col h-full overflow-x-hidden'>
-			<div className='flex gap-2 items-center text-text mt-6 lg:mt-10 mb-3'>
+		<main className='flex flex-col h-full overflow-x-hidden my-6 lg:my-10'>
+			<div className='flex gap-2 items-center text-text mb-3'>
 				<Box size={24} />
 				<h1 className='text-xl md:text-2xl font-bold'>{item.name}</h1>
 			</div>

@@ -65,8 +65,8 @@ const ProductSection = ({ item, godown }: { item: Item; godown: Godown }) => {
 						className='rounded-md bg-mantle w-full max-h-full'
 					/>
 				</div>
-				<div className='grow'>
-					<div className='grid grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-8 '>
+				<div className='grow max-sm:w-full'>
+					<div className=' grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-4 lg:gap-8 '>
 						<Card heading='Category' className='text-sapphire' Icon={Layers}>
 							{item.category}
 						</Card>
@@ -123,7 +123,7 @@ const Card = ({
 			className={`bg-surface2/10 hover:bg-surface2/15 ${className} rounded-md p-3 md:p-4 h-fit`}
 		>
 			<div className='flex items-center gap-2 text-xs md:text-sm'>
-				<div className='p-1 text-current bg-base rounded-md'>
+				<div className='p-1 md:p-2 text-current bg-base rounded-md'>
 					<Icon size={14} strokeWidth={1} absoluteStrokeWidth />
 				</div>
 				<div className='text-subtext0 capitalize'>{heading}</div>

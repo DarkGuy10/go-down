@@ -75,7 +75,7 @@ export const ViewWrapper = () => {
 					godowns={godowns}
 					sidebarOpen={sidebarOpen}
 					updateCurrentItem={item => {
-						if (width && width < 768) updateSidebarState(false)
+						if (width < 1024) updateSidebarState(false)
 						updateCurrentItem(item)
 					}}
 				/>

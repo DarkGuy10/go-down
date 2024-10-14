@@ -57,7 +57,7 @@ const Element = ({
 	updateCurrentItem: (arg0: Item | null) => void
 }) => (
 	<div
-		className='px-4 py-3 text-subtext1 transition-all hover:text-text hover:bg-surface2/15 cursor-pointer flex items-center'
+		className='px-4 py-3 text-sm sm:text-base sm:text-subtext1 text-subtext1 transition-all hover:text-text hover:bg-surface2/15 cursor-pointer flex items-center'
 		onClick={() => updateCurrentItem(data)}
 	>
 		<Box
@@ -98,7 +98,7 @@ const Category = ({
 				onMouseLeave={() => setHover(false)}
 			>
 				<div
-					className='text-subtext1 flex items-center overflow-hidden whitespace-nowrap'
+					className='text-sm sm:text-base sm:text-subtext1 text-subtext1 flex items-center overflow-hidden whitespace-nowrap'
 					style={hover ? { color } : {}}
 				>
 					<ChevronRight

@@ -89,6 +89,15 @@ const Category = ({
 	const [collapsed, setCollapsed] = useState(false)
 	const [hover, setHover] = useState(false)
 
+	const findItem = (node: TreeListItem): boolean => {
+		if (node.type === 'element') return true
+		return !!node.subItems.find(one => findItem(one))
+	}
+
+	const hasAnItem = subItems.find(one => findItem(one))
+
+	if (!hasAnItem) return <></>
+
 	return (
 		<div className='flex flex-col select-none'>
 			<div

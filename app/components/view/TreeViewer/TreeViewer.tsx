@@ -5,6 +5,7 @@ import { TreeList, TreeListItem } from './TreeList/TreeList'
 import { randomColor } from '@/utils'
 import { Search } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import { Badge } from '@/components/model'
 
 interface TreeViewerProps {
 	items: Item[]
@@ -21,10 +22,12 @@ export const TreeViewer = ({
 }: TreeViewerProps) => {
 	const [searchParam, updateSearchParam] = useState('')
 	const [tree, updateTree] = useState<TreeListItem[]>([])
+	const [filter, updateFilter] = useState<null | string>(null)
+	const filterCategories = [...new Set(items.map(i => i.category))]
 
 	useEffect(() => {
-		updateTree(processData(items, godowns, searchParam))
-	}, [items, godowns, searchParam])
+		updateTree(processData(items, godowns, searchParam, filter))
+	}, [items, godowns, searchParam, filter])
 
 	return (
 		<div
@@ -44,6 +47,20 @@ export const TreeViewer = ({
 					value={searchParam}
 					className='bg-mantle w-full pr-4 py-2 rounded-r-md border-none outline-none text-sm'
 				/>
+			</div>
+			<div className='flex flex-wrap gap-4 py-3 px-6'>
+				{filterCategories.map(e => (
+					<Badge
+						onClick={() => {
+							if (e === filter) updateFilter(null)
+							else updateFilter(e)
+						}}
+						active={e === filter}
+						key={e}
+					>
+						{e}
+					</Badge>
+				))}
 			</div>
 			<TreeList items={tree} updateCurrentItem={updateCurrentItem} />
 		</div>
@@ -85,10 +102,13 @@ const processGodown = (
 const processData = (
 	items: Item[],
 	godowns: Godown[],
-	searchParam: string = ''
+	searchParam: string = '',
+	filter: string | null
 ) => {
 	//HACK: This works somehow
 	//Please dont touch
+
+	items = items.filter(i => !filter || i.category === filter)
 
 	const itemMap = new Map(items.map(i => [i.item_id, i]))
 	const godownMap = new Map(godowns.map(g => [g.id, g]))

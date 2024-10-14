@@ -8,7 +8,7 @@ export const ActionRow = ({
 	toggleSidebarState: () => void
 }) => {
 	return (
-		<div className='flex gap-2 md:gap-4 items-center px-4'>
+		<div className='flex gap-2 md:gap-4 items-center pr-4'>
 			<ActionRowButton title='Open tree' onClick={toggleSidebarState}>
 				<Menu strokeWidth={1} absoluteStrokeWidth size={22} />
 			</ActionRowButton>

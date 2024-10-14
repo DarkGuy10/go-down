@@ -22,7 +22,7 @@ export const ProductViewer = ({
 	belongsTo: Godown | undefined | null
 }) => {
 	return (
-		<div className='bg-base flex grow px-6 py-6 lg:px-16 lg:py-10 overflow-hidden'>
+		<div className='bg-base flex grow px-6 lg:px-16 overflow-hidden'>
 			<div className='flex-1 overflow-x-hidddden overflow-y-auto'>
 				{currentItem ? (
 					<ProductSection item={currentItem} godown={belongsTo!} />
@@ -47,7 +47,7 @@ export const ProductViewer = ({
 const ProductSection = ({ item, godown }: { item: Item; godown: Godown }) => {
 	return (
 		<main className='flex flex-col h-full overflow-x-hidden'>
-			<div className='flex gap-2 items-center text-text mb-3'>
+			<div className='flex gap-2 items-center text-text mt-6 lg:mt-10 mb-3'>
 				<Box size={24} />
 				<h1 className='text-xl md:text-2xl font-bold'>{item.name}</h1>
 			</div>

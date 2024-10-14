@@ -86,7 +86,7 @@ const Category = ({
 	updateCurrentItem: (arg0: Item | null) => void
 	subItems: TreeListItem[]
 }) => {
-	const [collapsed, setCollapsed] = useState(true)
+	const [collapsed, setCollapsed] = useState(false)
 	const [hover, setHover] = useState(false)
 
 	return (

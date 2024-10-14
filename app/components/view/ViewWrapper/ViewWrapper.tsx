@@ -6,7 +6,7 @@ import { TreeViewer, ProductViewer } from '@/components/view'
 import { useWindowDimensions } from '@/hooks'
 import { Godown, Item } from '@/typings'
 import { getGodowns, getItems } from '@/utils'
-import { LoaderCircle } from 'lucide-react'
+import { Box, LoaderCircle, Timer, Warehouse } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
 interface Data {
@@ -28,7 +28,7 @@ export const ViewWrapper = () => {
 		updateSidebarState(!sidebarOpen)
 	}
 
-	const { height } = useWindowDimensions()
+	const { width } = useWindowDimensions()
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -75,7 +75,7 @@ export const ViewWrapper = () => {
 					godowns={godowns}
 					sidebarOpen={sidebarOpen}
 					updateCurrentItem={item => {
-						if (height && height < 768) updateSidebarState(false)
+						if (width && width < 768) updateSidebarState(false)
 						updateCurrentItem(item)
 					}}
 				/>
@@ -87,15 +87,43 @@ export const ViewWrapper = () => {
 					}
 				/>
 			</div>
+
 			<div className='h-7 flex-none bg-mantle text-xs text-subtext1 font-mono font-thin flex items-center justify-between px-4 select-none'>
-				<div className='text-green'>● All systems operational</div>
-				<div className='flex items-center gap-1'>
-					<div className='text-blue'>
-						Loaded {items.length} items & {godowns.length} godowns
-					</div>{' '}
-					<div className='text-surface1'>•</div>{' '}
-					<div className='text-yellow'>{latency} ms</div>
-				</div>
+				{width > 640 ? (
+					<>
+						<div className='text-green'>● All systems operational</div>
+						<div className='flex items-center gap-1'>
+							<div className='text-blue'>
+								Loaded {items.length} items & {godowns.length} godowns
+							</div>{' '}
+							<div className='text-surface1'>•</div>{' '}
+							<div className='text-yellow'>{latency} ms</div>
+						</div>
+					</>
+				) : (
+					<>
+						<div className='flex items-stretch grow justify-between text-blue'>
+							<div className='text-green'>● Systems online</div>
+							<div className='flex gap-1 items-start'>
+								<Box size={12} strokeWidth={1} absoluteStrokeWidth />
+								<div>{items.length}</div>
+							</div>
+							<div className='flex gap-1 items-start'>
+								<Warehouse size={12} strokeWidth={1} absoluteStrokeWidth />
+								<div>{godowns.length}</div>
+							</div>
+							<div className='flex gap-1 items-start'>
+								<Timer
+									size={12}
+									strokeWidth={1}
+									absoluteStrokeWidth
+									className='text-yellow'
+								/>
+								<div className='text-yellow'>{latency}ms</div>
+							</div>
+						</div>
+					</>
+				)}
 			</div>
 		</div>
 	)

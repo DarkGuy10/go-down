@@ -3,7 +3,7 @@
 import { Logo } from '@/components/model'
 import { ActionRow } from '@/components/model/ActionRow/ActionRow'
 import { TreeViewer, ProductViewer } from '@/components/view'
-import useWindowDimensions from '@/hooks'
+import { useWindowDimensions } from '@/hooks'
 import { Godown, Item } from '@/typings'
 import { getGodowns, getItems } from '@/utils'
 import { LoaderCircle } from 'lucide-react'
@@ -75,7 +75,7 @@ export const ViewWrapper = () => {
 					godowns={godowns}
 					sidebarOpen={sidebarOpen}
 					updateCurrentItem={item => {
-						if (height < 768) updateSidebarState(false)
+						if (height && height < 768) updateSidebarState(false)
 						updateCurrentItem(item)
 					}}
 				/>

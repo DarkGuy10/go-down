@@ -33,7 +33,7 @@ export const ProductViewer = ({
 							<div className='text-xl sm:text-2xl text-subtext1'>
 								Nothing to show
 							</div>
-							<div className='text-sm sm:text-base text-subtext0'>
+							<div className='text-sm sm:text-base sm:text-subtext0 text-subtext0'>
 								Select an item first
 							</div>
 						</div>

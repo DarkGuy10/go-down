@@ -30,8 +30,10 @@ export const ProductViewer = ({
 					<div className='h-full w-full flex items-center justify-center'>
 						<div className='flex flex-col bg-mantle rounded-lg p-10 items-center'>
 							<Wind className='text-subtext0 opacity-50 mb-3' size={50} />
-							<div className='text-2xl text-subtext1'>Nothing to show</div>
-							<div className='text-base text-subtext0'>
+							<div className='text-xl sm:text-2xl text-subtext1'>
+								Nothing to show
+							</div>
+							<div className='text-sm sm:text-base text-subtext0'>
 								Select an item first
 							</div>
 						</div>
